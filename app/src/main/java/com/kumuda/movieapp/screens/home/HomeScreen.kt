@@ -19,8 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
-import com.kumuda.movieapp.MovieRow
+import com.kumuda.movieapp.model.Movie
+import com.kumuda.movieapp.model.getMovies
 import com.kumuda.movieapp.navigation.MovieScreens
+import com.kumuda.movieapp.widgets.MovieRow
 
 @ExperimentalMaterial3Api
 @Composable
@@ -45,16 +47,7 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun MainContent(
     navController: NavController,
-    movieList: List<String> = listOf(
-        "Avatar",
-        "300",
-        "Harry Potter",
-        "Life",
-        "The Hack n Slash",
-        "Dung poop",
-        "Monster Keeper",
-        "Rotten Dust"
-    )
+    movieList: List<Movie> = getMovies()
 ) {
     LazyColumn {
         items(items = movieList) {
